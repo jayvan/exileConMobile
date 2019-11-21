@@ -1,0 +1,54 @@
+/obj
+/Temp
+/Library
+/Assets/Plugins/Editor/RelationsInspector/LayoutCaches.meta
+/Assets/Plugins/Editor/RelationsInspector/LayoutCaches
+Assets/FR2_Cache.asset
+Assets/FR2_Cache.asset.meta
+
+.DS_Store
+.vscode
+.vs
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+*.orig.meta
+.~lock*
+
+# Unity3D generated meta files
+*.pidb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+
+# StyleCop generated violations
+StyleCopViolations.xml
+
+# Windows Store Build Generated Files
+UWP/*
+
+# LibreOffice Generated Files
+*.xlsx#
+
+/Builds
+/BuildScripts/fastlane/README.md
+/BuildScripts/fastlane/report.xml
+/BuildScripts/build/
+/BuildScripts/.gradle
+
+/Assets/StreamingAssets/crashlytics-build.properties*
+/Assets/StreamingAssets.meta
+
+AdjustPostBuildAndroidLog.txt
+AdjustPostBuildiOSLog.txt
+
+/ProjectSettings/GoogleAarExplodeCache.xml
+
+AWSUploadCredentials.txt
+Assets/Levels/Backup_Save*
