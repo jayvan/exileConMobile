@@ -36,6 +36,7 @@ UWP/*
 # LibreOffice Generated Files
 *.xlsx#
 
+/Logs
 /Builds
 /BuildScripts/fastlane/README.md
 /BuildScripts/fastlane/report.xml
