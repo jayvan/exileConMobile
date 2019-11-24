@@ -3,6 +3,7 @@
 public class Enemy {
   public readonly Dictionary<DamageType, int> Attack;
   public readonly Dictionary<DamageType, int> Defense;
+  private readonly Clipper clipper;
 
   public Enemy(Dictionary<DamageType, int> attack, Dictionary<DamageType, int> defense) {
     this.Attack = attack;
@@ -33,6 +34,10 @@ public class Enemy {
     playerDefense.Subtract(this.Attack);
 
     return DamageSatisfied(playerAttack) && DamageSatisfied(playerDefense);
+  }
+
+  public void DamageEquipment(List<Equipment> equipment) {
+
   }
 
   private bool DamageSatisfied(Dictionary<DamageType, int> damage) {
