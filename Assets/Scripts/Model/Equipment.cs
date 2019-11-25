@@ -1,39 +1,25 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-
-public class Equipment {
+﻿public class Equipment {
   public int Durability { get; private set; }
   public Rarity Rarity { get; private set; }
   public EquipmentType EquipmentType { get; private set; }
 
-  public Dictionary<DamageType, int> DamageTypes {
+  public DamageSet DamageTypes {
     get {
-      var damageTypes = new Dictionary<DamageType, int>();
-
-      foreach (KeyValuePair<DamageType, int> kvp in BaseDamageTypes.Concat(QualityDamageTypes).Concat(RolledDamageTypes)) {
-        if (!damageTypes.ContainsKey(kvp.Key)) {
-          damageTypes.Add(kvp.Key, kvp.Value);
-        } else {
-          damageTypes[kvp.Key] += kvp.Value;
-        }
-      }
-
-      return damageTypes;
+      return this.qualityDamageTypes + this.baseDamageTypes + this.rolledDamageTypes;
     }
   }
 
-  public ReadOnlyDictionary<DamageType, int> BaseDamageTypes => new ReadOnlyDictionary<DamageType, int>(this.baseDamageTypes);
-  public ReadOnlyDictionary<DamageType, int> QualityDamageTypes => new ReadOnlyDictionary<DamageType, int>(this.qualityDamageTypes);
-  public ReadOnlyDictionary<DamageType, int> RolledDamageTypes => new ReadOnlyDictionary<DamageType, int>(this.rolledDamageTypes);
+  public DamageSet BaseDamageTypes => this.baseDamageTypes;
+  public DamageSet QualityDamageTypes => this.qualityDamageTypes;
+  public DamageSet RolledDamageTypes => this.rolledDamageTypes;
 
-  private Dictionary<DamageType, int> baseDamageTypes = new Dictionary<DamageType, int>();
-  private Dictionary<DamageType, int> qualityDamageTypes = new Dictionary<DamageType, int>();
-  private Dictionary<DamageType, int> rolledDamageTypes = new Dictionary<DamageType, int>();
+  private DamageSet baseDamageTypes = new DamageSet();
+  private DamageSet qualityDamageTypes = new DamageSet();
+  private DamageSet rolledDamageTypes = new DamageSet();
 
-  public Equipment(EquipmentType type, Dictionary<DamageType, int> baseDamageTypes) {
+  public Equipment(EquipmentType type, DamageSet baseDamage) {
     this.EquipmentType = type;
-    this.baseDamageTypes = baseDamageTypes;
+    this.baseDamageTypes = baseDamage;
   }
 
   public Equipment(EquipmentType type, Rarity rarity, int durability) {

@@ -9,31 +9,31 @@ public class CombatTest {
 
   [OneTimeSetUp]
   public void Setup() {
-    var enemyOneAttack = new Dictionary<DamageType, int> {
-      { DamageType.FIRE, 3}
+    var enemyOneAttack = new DamageSet {
+      Fire = 3
     };
-    var enemyOneDefense = new Dictionary<DamageType, int> {
-      { DamageType.COLD, 3}
+    var enemyOneDefense = new DamageSet {
+      Cold = 3
     };
 
     this.enemyOne = new Enemy(enemyOneAttack, enemyOneDefense);
 
-    var enemyTwoAttack = new Dictionary<DamageType, int> {
-      { DamageType.FIRE, 3}
+    var enemyTwoAttack = new DamageSet {
+      Fire = 3
     };
-    var enemyTwoDefense = new Dictionary<DamageType, int> {
-      { DamageType.COLD, 3},
-      { DamageType.WILD, 2}
+    var enemyTwoDefense = new DamageSet {
+      Cold = 3,
+      Extra = 2
     };
 
     this.enemyTwo = new Enemy(enemyTwoAttack, enemyTwoDefense);
 
-    var enemyThreeAttack = new Dictionary<DamageType, int> {
-      { DamageType.FIRE, 3},
-      { DamageType.WILD, 2}
+    var enemyThreeAttack = new DamageSet {
+      Fire = 3,
+      Extra = 2
     };
-    var enemyThreeDefense = new Dictionary<DamageType, int> {
-      { DamageType.COLD, 3}
+    var enemyThreeDefense = new DamageSet {
+      Cold = 3
     };
 
     this.enemyThree = new Enemy(enemyThreeAttack, enemyThreeDefense);
@@ -52,7 +52,7 @@ public class CombatTest {
   [Test]
   public void TooLowAttackDoesNotWork() {
     var gear = new List<Equipment> {
-      new Equipment(EquipmentType.ONE_HAND, new Dictionary<DamageType, int>{{DamageType.COLD, 2}}),
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet{Cold = 2}),
       new Equipment(EquipmentType.SHIELD, this.enemyOne.Attack)
     };
 
@@ -64,7 +64,7 @@ public class CombatTest {
   public void TooLowDefenseDoesNotWork() {
     var gear = new List<Equipment> {
       new Equipment(EquipmentType.ONE_HAND, this.enemyOne.Defense),
-      new Equipment(EquipmentType.SHIELD, new Dictionary<DamageType, int>{{DamageType.FIRE, 2}})
+      new Equipment(EquipmentType.SHIELD, new DamageSet{Fire = 2})
     };
 
 
@@ -74,7 +74,7 @@ public class CombatTest {
   [Test]
   public void ExtraAttackOfMainTypeWorks() {
     var gear = new List<Equipment> {
-      new Equipment(EquipmentType.ONE_HAND, new Dictionary<DamageType, int>{{DamageType.COLD, 5}}),
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet{Cold = 5}),
       new Equipment(EquipmentType.SHIELD, this.enemyTwo.Attack)
     };
 
@@ -84,9 +84,9 @@ public class CombatTest {
   [Test]
   public void ExtraAttackOfSecondaryTypeWorks() {
     var gear = new List<Equipment> {
-      new Equipment(EquipmentType.ONE_HAND, new Dictionary<DamageType, int> {
-        {DamageType.COLD, 3},
-        {DamageType.PHYSICAL, 2}
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet {
+        Cold = 3,
+        Physical = 2
       }),
       new Equipment(EquipmentType.SHIELD, this.enemyTwo.Attack)
     };
@@ -97,10 +97,10 @@ public class CombatTest {
   [Test]
   public void ExtraAttackOfMultipleTypesWorks() {
     var gear = new List<Equipment> {
-      new Equipment(EquipmentType.ONE_HAND, new Dictionary<DamageType, int> {
-        {DamageType.COLD, 3},
-        {DamageType.PHYSICAL, 1},
-        {DamageType.LIGHTNING, 1}
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet {
+        Cold = 3,
+        Physical = 1,
+        Lightning = 1
       }),
       new Equipment(EquipmentType.SHIELD, this.enemyTwo.Attack)
     };
@@ -109,11 +109,9 @@ public class CombatTest {
   }
 
   [Test]
-  public void LackingWildAttackDoesNotWork() {
+  public void LackingExtraAttackDoesNotWork() {
     var gear = new List<Equipment> {
-      new Equipment(EquipmentType.ONE_HAND, new Dictionary<DamageType, int> {
-        {DamageType.COLD, 3}
-      }),
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet{Cold = 3}),
       new Equipment(EquipmentType.SHIELD, this.enemyTwo.Attack)
     };
 
@@ -124,7 +122,7 @@ public class CombatTest {
   public void ExtraDefenseOfMainTypeWorks() {
     var gear = new List<Equipment> {
       new Equipment(EquipmentType.ONE_HAND, this.enemyThree.Defense),
-      new Equipment(EquipmentType.SHIELD, new Dictionary<DamageType, int>{{DamageType.FIRE, 5}})
+      new Equipment(EquipmentType.SHIELD, new DamageSet{Fire = 5})
     };
 
     Assert.True(this.enemyThree.CanDefeatWith(gear));
@@ -134,9 +132,9 @@ public class CombatTest {
   public void ExtraDefenseOfSecondaryTypeWorks() {
     var gear = new List<Equipment> {
       new Equipment(EquipmentType.ONE_HAND, this.enemyThree.Defense),
-      new Equipment(EquipmentType.SHIELD, new Dictionary<DamageType, int> {
-        {DamageType.FIRE, 3},
-        {DamageType.PHYSICAL, 2}
+      new Equipment(EquipmentType.SHIELD, new DamageSet {
+        Fire = 3,
+        Block = 2
       })
     };
 
@@ -147,10 +145,10 @@ public class CombatTest {
   public void ExtraDefenseOfMultipleTypesWorks() {
     var gear = new List<Equipment> {
       new Equipment(EquipmentType.ONE_HAND, this.enemyThree.Defense),
-      new Equipment(EquipmentType.SHIELD, new Dictionary<DamageType, int> {
-        {DamageType.FIRE, 3},
-        {DamageType.PHYSICAL, 1},
-        {DamageType.LIGHTNING, 1}
+      new Equipment(EquipmentType.SHIELD, new DamageSet {
+        Fire = 3,
+        Block = 1,
+        Lightning = 1
       })
     };
 
@@ -158,14 +156,34 @@ public class CombatTest {
   }
 
   [Test]
-  public void LackingWildDefenseDoesNotWork() {
+  public void LackingExtraDefenseDoesNotWork() {
     var gear = new List<Equipment> {
       new Equipment(EquipmentType.ONE_HAND, this.enemyThree.Defense),
-      new Equipment(EquipmentType.SHIELD, new Dictionary<DamageType, int> {
-        {DamageType.FIRE, 3}
+      new Equipment(EquipmentType.SHIELD, new DamageSet {
+        Fire = 3
       })
     };
 
     Assert.False(this.enemyThree.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void WildsOnPlayerGear() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet { Fire = 2, Wild = 2, Cold = 1 }),
+      new Equipment(EquipmentType.SHIELD, new DamageSet { Wild = 2, Fire = 2, Lightning = 1})
+    };
+
+    Assert.True(this.enemyThree.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void ExtraTypedDamageDoesNotCountAsWild() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet { Cold = 2, Lightning = 3}),
+      new Equipment(EquipmentType.SHIELD, this.enemyTwo.Attack)
+    };
+
+    Assert.False(this.enemyTwo.CanDefeatWith(gear));
   }
 }
