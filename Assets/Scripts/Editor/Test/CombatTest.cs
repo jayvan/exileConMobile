@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEngine;
 
 [Timeout(1000)]
 public class CombatTest {
   private Enemy enemyOne;
   private Enemy enemyTwo;
   private Enemy enemyThree;
+  private Enemy enemyFour;
 
   [OneTimeSetUp]
   public void Setup() {
@@ -37,6 +39,17 @@ public class CombatTest {
     };
 
     this.enemyThree = new Enemy(enemyThreeAttack, enemyThreeDefense);
+
+    var enemyFourAttack = new DamageSet {
+      Block = 5,
+      Extra = 2
+    };
+    var enemyFourDefense = new DamageSet {
+      Physical = 5,
+      Extra = 2
+    };
+
+    this.enemyFour = new Enemy(enemyFourAttack, enemyFourDefense);
   }
 
   [Test]
@@ -185,5 +198,67 @@ public class CombatTest {
     };
 
     Assert.False(this.enemyTwo.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void JewelryProvidesPhysicalAndBlock() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.RING, new DamageSet {Physical = 1, Block = 1}),
+      new Equipment(EquipmentType.RING, new DamageSet {Physical = 1, Block = 1}),
+      new Equipment(EquipmentType.AMULET, new DamageSet {Physical = 3, Block = 3}),
+      new Equipment(EquipmentType.BODY, new DamageSet {Cold = 2 }),
+      new Equipment(EquipmentType.ONE_HAND, new DamageSet {Cold = 2 })
+    };
+
+    Assert.True(this.enemyFour.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void JewelryPhysicalAndBlockIsNotDoubleCounted() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.RING, new DamageSet {Physical = 1, Block = 1}),
+      new Equipment(EquipmentType.RING, new DamageSet {Physical = 1, Block = 1}),
+      new Equipment(EquipmentType.AMULET, new DamageSet {Physical = 3, Block = 3}),
+    };
+
+    Assert.False(this.enemyFour.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void JewelryCanSatisfyStats() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.RING, new DamageSet {Cold = 1, Fire = 1}),
+      new Equipment(EquipmentType.RING, new DamageSet {Cold = 1, Fire = 1}),
+      new Equipment(EquipmentType.AMULET, new DamageSet {Cold = 1, Fire = 1}),
+    };
+
+    Assert.True(this.enemyOne.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void JewelryCanBeSplitAcrossAttackAndDefense() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.RING, new DamageSet {Fire = 5, Cold = 3})
+    };
+
+    Assert.True(this.enemyThree.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void JewelryWildWorks() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.RING, new DamageSet {Wild = 8})
+    };
+
+    Assert.True(this.enemyThree.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void JewelryLackingWildDoesNotWork() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.RING, new DamageSet {Wild = 7})
+    };
+
+    Assert.False(this.enemyThree.CanDefeatWith(gear));
   }
 }
