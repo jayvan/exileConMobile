@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine;
 
 [Timeout(1000)]
 public class CombatTest {
@@ -260,5 +259,15 @@ public class CombatTest {
     };
 
     Assert.False(this.enemyThree.CanDefeatWith(gear));
+  }
+
+  [Test]
+  public void JewelryHelpsArmourWhenWeaponIsSatisfied() {
+    var gear = new List<Equipment> {
+      new Equipment(EquipmentType.ONE_HAND, this.enemyOne.Defense),
+      new Equipment(EquipmentType.RING, this.enemyOne.Attack),
+    };
+
+    Assert.True(this.enemyOne.CanDefeatWith(gear));
   }
 }
