@@ -56,6 +56,6 @@ public class Enemy {
       }
     }
 
-    return playerAttack.DamageSatisfied() && playerDefense.DamageSatisfied();
+    return playerAttack.DamageSatisfied() && (playerDefense + playerJewelry).ConvertToExtra().DamageSatisfied();
   }
 }
