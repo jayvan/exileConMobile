@@ -20,16 +20,16 @@ public class Enemy {
     // Rings are amulets are calculated afterwards and split as needed between attack/defense
     foreach (Equipment equipment in playerEquipment) {
       switch (equipment.EquipmentType) {
-        case EquipmentType.ONE_HAND:
-        case EquipmentType.TWO_HAND:
+        case EquipmentType.OneHand:
+        case EquipmentType.TwoHand:
           playerAttack += equipment.DamageTypes;
           break;
-        case EquipmentType.BODY:
-        case EquipmentType.SHIELD:
+        case EquipmentType.Body:
+        case EquipmentType.Shield:
           playerDefense += equipment.DamageTypes;
           break;
-        case EquipmentType.RING:
-        case EquipmentType.AMULET:
+        case EquipmentType.Ring:
+        case EquipmentType.Amulet:
           playerAttack.Physical += equipment.DamageTypes.Physical;
           playerDefense.Block += equipment.DamageTypes.Block;
           playerJewelry += equipment.DamageTypes;

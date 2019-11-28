@@ -1,5 +1,6 @@
 ﻿public enum Rarity {
-  NORMAL,
-  MAGIC,
-  RARE
+  Normal,
+  Magic,
+  Rare,
+  Unique
 }

@@ -6,9 +6,9 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void HighestRarityComparer() {
-    Equipment rare = new Equipment(Rarity.RARE);
-    Equipment magic = new Equipment(Rarity.MAGIC);
-    Equipment normal = new Equipment(Rarity.NORMAL);
+    Equipment rare = new Equipment(Rarity.Rare);
+    Equipment magic = new Equipment(Rarity.Magic);
+    Equipment normal = new Equipment(Rarity.Normal);
     List<Equipment> equipment = new List<Equipment> {normal, magic, rare};
     equipment.Shuffle();
     equipment.Sort(new HighestRarityComparer());
@@ -20,9 +20,9 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void LowestRarityComparer() {
-    Equipment rare = new Equipment(Rarity.RARE);
-    Equipment magic = new Equipment(Rarity.MAGIC);
-    Equipment normal = new Equipment(Rarity.NORMAL);
+    Equipment rare = new Equipment(Rarity.Rare);
+    Equipment magic = new Equipment(Rarity.Magic);
+    Equipment normal = new Equipment(Rarity.Normal);
     List<Equipment> equipment = new List<Equipment> {normal, magic, rare};
     equipment.Shuffle();
     equipment.Sort(new LowestRarityComparer());
@@ -34,7 +34,7 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void MostDamaged() {
-    Equipment perfect = new Equipment(2);
+    Equipment perfect = new Equipment(0);
     Equipment damaged = new Equipment(1);
     List<Equipment> equipment = new List<Equipment> {perfect, damaged};
     equipment.Shuffle();
@@ -46,7 +46,7 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void LeastDamaged() {
-    Equipment perfect = new Equipment(2);
+    Equipment perfect = new Equipment(0);
     Equipment damaged = new Equipment(1);
     List<Equipment> equipment = new List<Equipment> {perfect, damaged};
     equipment.Shuffle();
@@ -58,12 +58,12 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void Weapon() {
-    Equipment oneHander = new Equipment(EquipmentType.ONE_HAND);
-    Equipment twoHander = new Equipment(EquipmentType.TWO_HAND);
-    Equipment shield = new Equipment(EquipmentType.SHIELD);
-    Equipment body = new Equipment(EquipmentType.BODY);
-    Equipment amulet = new Equipment(EquipmentType.AMULET);
-    Equipment ring = new Equipment(EquipmentType.RING);
+    Equipment oneHander = new Equipment(EquipmentType.OneHand);
+    Equipment twoHander = new Equipment(EquipmentType.TwoHand);
+    Equipment shield = new Equipment(EquipmentType.Shield);
+    Equipment body = new Equipment(EquipmentType.Body);
+    Equipment amulet = new Equipment(EquipmentType.Amulet);
+    Equipment ring = new Equipment(EquipmentType.Ring);
     List<Equipment> equipment = new List<Equipment> {oneHander, twoHander, shield, body, amulet, ring};
     List<Equipment> valid = new List<Equipment> {oneHander, twoHander};
     equipment.Shuffle();
@@ -76,12 +76,12 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void Shield() {
-    Equipment oneHander = new Equipment(EquipmentType.ONE_HAND);
-    Equipment twoHander = new Equipment(EquipmentType.TWO_HAND);
-    Equipment shield = new Equipment(EquipmentType.SHIELD);
-    Equipment body = new Equipment(EquipmentType.BODY);
-    Equipment amulet = new Equipment(EquipmentType.AMULET);
-    Equipment ring = new Equipment(EquipmentType.RING);
+    Equipment oneHander = new Equipment(EquipmentType.OneHand);
+    Equipment twoHander = new Equipment(EquipmentType.TwoHand);
+    Equipment shield = new Equipment(EquipmentType.Shield);
+    Equipment body = new Equipment(EquipmentType.Body);
+    Equipment amulet = new Equipment(EquipmentType.Amulet);
+    Equipment ring = new Equipment(EquipmentType.Ring);
     List<Equipment> equipment = new List<Equipment> {oneHander, twoHander, shield, body, amulet, ring};
     equipment.Shuffle();
     equipment.Sort(new ShieldComparer());
@@ -91,12 +91,12 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void Body() {
-    Equipment oneHander = new Equipment(EquipmentType.ONE_HAND);
-    Equipment twoHander = new Equipment(EquipmentType.TWO_HAND);
-    Equipment shield = new Equipment(EquipmentType.SHIELD);
-    Equipment body = new Equipment(EquipmentType.BODY);
-    Equipment amulet = new Equipment(EquipmentType.AMULET);
-    Equipment ring = new Equipment(EquipmentType.RING);
+    Equipment oneHander = new Equipment(EquipmentType.OneHand);
+    Equipment twoHander = new Equipment(EquipmentType.TwoHand);
+    Equipment shield = new Equipment(EquipmentType.Shield);
+    Equipment body = new Equipment(EquipmentType.Body);
+    Equipment amulet = new Equipment(EquipmentType.Amulet);
+    Equipment ring = new Equipment(EquipmentType.Ring);
     List<Equipment> equipment = new List<Equipment> {oneHander, twoHander, shield, body, amulet, ring};
     equipment.Shuffle();
     equipment.Sort(new BodyComparer());
@@ -106,12 +106,12 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void Amulet() {
-    Equipment oneHander = new Equipment(EquipmentType.ONE_HAND);
-    Equipment twoHander = new Equipment(EquipmentType.TWO_HAND);
-    Equipment shield = new Equipment(EquipmentType.SHIELD);
-    Equipment body = new Equipment(EquipmentType.BODY);
-    Equipment amulet = new Equipment(EquipmentType.AMULET);
-    Equipment ring = new Equipment(EquipmentType.RING);
+    Equipment oneHander = new Equipment(EquipmentType.OneHand);
+    Equipment twoHander = new Equipment(EquipmentType.TwoHand);
+    Equipment shield = new Equipment(EquipmentType.Shield);
+    Equipment body = new Equipment(EquipmentType.Body);
+    Equipment amulet = new Equipment(EquipmentType.Amulet);
+    Equipment ring = new Equipment(EquipmentType.Ring);
     List<Equipment> equipment = new List<Equipment> {oneHander, twoHander, shield, body, amulet, ring};
     equipment.Shuffle();
     equipment.Sort(new AmuletComparer());
@@ -121,13 +121,13 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void Ring() {
-    Equipment oneHander = new Equipment(EquipmentType.ONE_HAND);
-    Equipment twoHander = new Equipment(EquipmentType.TWO_HAND);
-    Equipment shield = new Equipment(EquipmentType.SHIELD);
-    Equipment body = new Equipment(EquipmentType.BODY);
-    Equipment amulet = new Equipment(EquipmentType.AMULET);
-    Equipment ringA = new Equipment(EquipmentType.RING);
-    Equipment ringB = new Equipment(EquipmentType.RING);
+    Equipment oneHander = new Equipment(EquipmentType.OneHand);
+    Equipment twoHander = new Equipment(EquipmentType.TwoHand);
+    Equipment shield = new Equipment(EquipmentType.Shield);
+    Equipment body = new Equipment(EquipmentType.Body);
+    Equipment amulet = new Equipment(EquipmentType.Amulet);
+    Equipment ringA = new Equipment(EquipmentType.Ring);
+    Equipment ringB = new Equipment(EquipmentType.Ring);
     List<Equipment> equipment = new List<Equipment> {oneHander, twoHander, shield, body, amulet, ringA, ringB};
     List<Equipment> valid = new List<Equipment> {ringA, ringB};
     equipment.Shuffle();
@@ -140,13 +140,13 @@ public class ClipTest {
   [Test]
   [Repeat(10)]
   public void Jewelry() {
-    Equipment oneHander = new Equipment(EquipmentType.ONE_HAND);
-    Equipment twoHander = new Equipment(EquipmentType.TWO_HAND);
-    Equipment shield = new Equipment(EquipmentType.SHIELD);
-    Equipment body = new Equipment(EquipmentType.BODY);
-    Equipment amulet = new Equipment(EquipmentType.AMULET);
-    Equipment ringA = new Equipment(EquipmentType.RING);
-    Equipment ringB = new Equipment(EquipmentType.RING);
+    Equipment oneHander = new Equipment(EquipmentType.OneHand);
+    Equipment twoHander = new Equipment(EquipmentType.TwoHand);
+    Equipment shield = new Equipment(EquipmentType.Shield);
+    Equipment body = new Equipment(EquipmentType.Body);
+    Equipment amulet = new Equipment(EquipmentType.Amulet);
+    Equipment ringA = new Equipment(EquipmentType.Ring);
+    Equipment ringB = new Equipment(EquipmentType.Ring);
     List<Equipment> equipment = new List<Equipment> {oneHander, twoHander, shield, body, amulet, ringA, ringB};
     List<Equipment> valid = new List<Equipment> {ringA, ringB, amulet};
     equipment.Shuffle();
@@ -161,12 +161,12 @@ public class ClipTest {
   [Repeat(10)]
   public void Composition() {
     // Jewelry > Rarity > Durability
-    Equipment ringA = new Equipment(EquipmentType.RING, Rarity.RARE, 2);
-    Equipment ringB = new Equipment(EquipmentType.RING, Rarity.RARE, 1);
-    Equipment amulet = new Equipment(EquipmentType.RING, Rarity.MAGIC, 1);
-    Equipment weapon = new Equipment(EquipmentType.ONE_HAND, Rarity.RARE, 2);
-    Equipment shield = new Equipment(EquipmentType.SHIELD, Rarity.RARE, 1);
-    Equipment body = new Equipment(EquipmentType.BODY, Rarity.NORMAL, 2);
+    Equipment ringA = new Equipment(EquipmentType.Ring, Rarity.Rare, 2);
+    Equipment ringB = new Equipment(EquipmentType.Ring, Rarity.Rare, 1);
+    Equipment amulet = new Equipment(EquipmentType.Ring, Rarity.Magic, 1);
+    Equipment weapon = new Equipment(EquipmentType.OneHand, Rarity.Rare, 2);
+    Equipment shield = new Equipment(EquipmentType.Shield, Rarity.Rare, 1);
+    Equipment body = new Equipment(EquipmentType.Body, Rarity.Normal, 2);
 
     List<Equipment> equipment = new List<Equipment> {weapon, shield, body, amulet, ringA, ringB};
     equipment.Shuffle();

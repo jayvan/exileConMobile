@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 741990f40103e4e8db9cbe9f0189b40f
+  m_SerializeEntries:
+  - m_GUID: 06e7503dfa0154a459a811867e57adc9
+    m_Address: card_base/Unique
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2a7d70f4c0b344c6e848e2e75f5934af
+    m_Address: card_base/Rare
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2fd96f23924d743eb9501fed8a72ddfb
+    m_Address: card_base/Normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b9f0a3b21d96d4a56be761650e2686c6
+    m_Address: card_base/Magic
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c4159b66323e54eb8a3ca96502fc5b38
+    m_Address: card_base/Currency
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: d83ee919f666f4533b10ab926efd2ece, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a5d2d2c89175440f6851a95e2e0ace0f, type: 2}
+    - {fileID: 11400000, guid: 0bfbf402ca5304454af5a30d36d06410, type: 2}

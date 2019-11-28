@@ -86,6 +86,17 @@ public struct DamageSet {
     };
   }
 
+  public DamageSet(string[] fields) {
+    this.Block = int.Parse(fields[1]);
+    this.Physical = int.Parse(fields[2]);
+    this.Fire = int.Parse(fields[3]);
+    this.Cold = int.Parse(fields[4]);
+    this.Lightning = int.Parse(fields[5]);
+    this.Chaos = int.Parse(fields[6]);
+    this.Extra = int.Parse(fields[7]);
+    this.Wild = int.Parse(fields[8]);
+  }
+
   public DamageSet ConvertToExtra() {
     return new DamageSet {
       Block = Math.Min(0, this.Block),

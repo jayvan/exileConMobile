@@ -1,6 +1,6 @@
 ﻿public class JewelryComparer : ClipComparer {
   protected override int EquipmentValue(Equipment equipment) {
-    return equipment.EquipmentType == EquipmentType.AMULET || equipment.EquipmentType == EquipmentType.RING
+    return equipment.EquipmentType == EquipmentType.Amulet || equipment.EquipmentType == EquipmentType.Ring
       ? 0
       : 1;
   }

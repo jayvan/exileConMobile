@@ -25,7 +25,7 @@ public class Clipper {
 
     if (this.strategy == ClipStrategy.CLIP_ALL) {
       foreach (Equipment equip in equipment) {
-        result.Add(equip, Math.Min(this.clipCount, equip.Durability));
+        result.Add(equip, Math.Min(this.clipCount, equip.Damage));
       }
     } else {
       equipment.Sort(this.comparer);
@@ -40,7 +40,7 @@ public class Clipper {
           result[equip]++;
         }
 
-        if (this.strategy == ClipStrategy.CLIP_DISTINCT || equip.Durability - result[equip] <= 0) {
+        if (this.strategy == ClipStrategy.CLIP_DISTINCT || equip.Damage - result[equip] <= 0) {
           equipmentIndex++;
         }
 

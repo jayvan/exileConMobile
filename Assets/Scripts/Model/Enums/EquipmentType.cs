@@ -1,8 +1,8 @@
 ﻿public enum EquipmentType {
-  TWO_HAND,
-  ONE_HAND,
-  SHIELD,
-  BODY,
-  AMULET,
-  RING
+  TwoHand,
+  OneHand,
+  Shield,
+  Body,
+  Amulet,
+  Ring
 }

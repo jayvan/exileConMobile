@@ -37,9 +37,9 @@ public class ClipperTest {
 
   [Test]
   public void ClipNoRepeats() {
-    Equipment itemOne = new Equipment(EquipmentType.ONE_HAND, Rarity.RARE, 2);
-    Equipment itemTwo = new Equipment(EquipmentType.SHIELD, Rarity.MAGIC, 2);
-    Equipment itemThree = new Equipment(EquipmentType.BODY, Rarity.NORMAL, 2);
+    Equipment itemOne = new Equipment(EquipmentType.OneHand, Rarity.Rare, 2);
+    Equipment itemTwo = new Equipment(EquipmentType.Shield, Rarity.Magic, 2);
+    Equipment itemThree = new Equipment(EquipmentType.Body, Rarity.Normal, 2);
 
     var equipment = new List<Equipment> {itemOne, itemTwo, itemThree};
 
@@ -53,9 +53,9 @@ public class ClipperTest {
 
   [Test]
   public void ClipRepeats() {
-    Equipment itemOne = new Equipment(EquipmentType.ONE_HAND, Rarity.RARE, 2);
-    Equipment itemTwo = new Equipment(EquipmentType.SHIELD, Rarity.MAGIC, 2);
-    Equipment itemThree = new Equipment(EquipmentType.BODY, Rarity.NORMAL, 2);
+    Equipment itemOne = new Equipment(EquipmentType.OneHand, Rarity.Rare, 2);
+    Equipment itemTwo = new Equipment(EquipmentType.Shield, Rarity.Magic, 2);
+    Equipment itemThree = new Equipment(EquipmentType.Body, Rarity.Normal, 2);
 
     var equipment = new List<Equipment> {itemOne, itemTwo, itemThree};
 

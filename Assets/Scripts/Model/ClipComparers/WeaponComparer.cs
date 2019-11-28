@@ -1,6 +1,6 @@
 ﻿public class WeaponComparer : ClipComparer {
   protected override int EquipmentValue(Equipment equipment) {
-    return equipment.EquipmentType == EquipmentType.ONE_HAND || equipment.EquipmentType == EquipmentType.TWO_HAND
+    return equipment.EquipmentType == EquipmentType.OneHand || equipment.EquipmentType == EquipmentType.TwoHand
       ? 0
       : 1;
   }
