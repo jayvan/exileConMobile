@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
@@ -15,13 +16,21 @@ public class CardView : MonoBehaviour {
 
   public void SetItem(Equipment item) {
     // TODO: Font Colors
-    // TODO: Image
     Addressables.LoadAssetAsync<Sprite>("card_base/" + item.Rarity).Completed += load => {
       this.backgroundImage.sprite = load.Result;
     };
 
+    Addressables.LoadAssetAsync<Sprite>("items/" + item.Base.Reference).Completed += load => {
+      this.itemImage.sprite = load.Result;
+    };
+
     this.itemName.text = item.Name;
-    this.modifierName.text = item.ModifierName;
+    string modifierText = string.Empty;
+    if (item.Rarity != Rarity.Unique) {
+      modifierText = item.ModifierName ?? Data.Translations.Get(item.Base.EquipmentType.ToString()).Value;
+    }
+
+    this.modifierName.text = modifierText;
 
     this.itemName.color = this.modifierName.color = this.rarityColors.Get(item);
 

@@ -2,7 +2,7 @@ langKey	translation
 2mace_1	Mallet
 2mace_2	2mace_2
 2mace_3	2mace_3
-2mace_4	2mace_4
+2mace_4	Great Mace
 2mace_5	2mace_5
 shield_1	Corroded Tower Shield
 shield_2	Splendid Round Shield
@@ -40,7 +40,19 @@ dagger_5	dagger_5
 1mace_4	1mace_4
 1mace_5	1mace_5
 claw_1	Nailed Fist
-claw_2	claw_2
+claw_2	Spiked Wrap
 claw_3	claw_3
 claw_4	claw_4
 claw_5	claw_5
+mod_phys_2	of Mercilessness
+mod_cold_1	of Chilling
+ring_cold	Sapphire Ring
+mod_ring_rare_1	Enthralling Clasp
+str_shield_1	Corroded Tower Shield
+TwoHand	Weapon
+OneHand	Weapon
+Shield	Shield
+Body	Armour
+Amulet	Amulet
+Ring	Ring
+unq_aml_volls	Voll’s Devotion

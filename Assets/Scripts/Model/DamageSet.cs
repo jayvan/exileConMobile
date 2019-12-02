@@ -93,8 +93,8 @@ public struct DamageSet {
     this.Cold = int.Parse(fields[4]);
     this.Lightning = int.Parse(fields[5]);
     this.Chaos = int.Parse(fields[6]);
-    this.Extra = int.Parse(fields[7]);
-    this.Wild = int.Parse(fields[8]);
+    this.Wild = int.Parse(fields[7]);
+    this.Extra = int.Parse(fields[8]);
   }
 
   public DamageSet ConvertToExtra() {

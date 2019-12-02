@@ -1,26 +1,30 @@
-﻿using System;
-
-public class Equipment {
+﻿public class Equipment {
   public BaseEquipment Base { get; private set; }
   public int Damage { get; private set; }
-  public Rarity Rarity { get; private set; }
+  public Rarity Rarity => this.Base.Unique ? Rarity.Unique : this.rarity;
   public EquipmentType EquipmentType => this.Base.EquipmentType;
+  public DamageSetConfig RolledMod { get; private set; }
 
-  public DamageSet DamageTypes {
+  public DamageSet DamageTypes => this.qualityDamageTypes + this.BaseDamageTypes + this.RolledDamageTypes;
+
+  public string Name => Base.Name;
+  public string ModifierName => RolledMod == null ? null : RolledMod.Translation;
+
+  public DamageSet BaseDamageTypes => this.Base.DamageSet;
+  public DamageSet RolledDamageTypes {
     get {
-      return this.qualityDamageTypes + this.BaseDamageTypes + this.rolledDamageTypes;
+      if (this.Base.Unique) {
+        return this.Base.SecondaryDamageSet;
+      }
+
+      return this.RolledMod?.DamageSet ?? new DamageSet();
     }
   }
 
-  public string Name => Base.Name;
-  public string ModifierName => string.Empty;
-
-  public DamageSet BaseDamageTypes => this.Base.DamageSet;
   public DamageSet QualityDamageTypes => this.qualityDamageTypes;
-  public DamageSet RolledDamageTypes => this.rolledDamageTypes;
 
   private DamageSet qualityDamageTypes = new DamageSet();
-  private DamageSet rolledDamageTypes = new DamageSet();
+  private Rarity rarity;
 
   public Equipment(BaseEquipment baseEquipment) {
     this.Base = baseEquipment;
@@ -32,7 +36,7 @@ public class Equipment {
 
   public Equipment(EquipmentType type, Rarity rarity, int damage) {
     this.Base = new BaseEquipment(type, new DamageSet());
-    this.Rarity = rarity;
+    this.rarity = rarity;
     this.Damage = damage;
   }
 
@@ -41,10 +45,19 @@ public class Equipment {
   }
 
   public Equipment(Rarity rarity) {
-    this.Rarity = rarity;
+    this.rarity = rarity;
   }
 
   public Equipment(int damage) {
     this.Damage = damage;
+  }
+
+  public void SetRolledMod(DamageSetConfig rolledMod, Rarity rarity) {
+    this.RolledMod = rolledMod;
+    this.rarity = rarity;
+  }
+
+  public void RemoveDurability() {
+    this.Damage++;
   }
 }

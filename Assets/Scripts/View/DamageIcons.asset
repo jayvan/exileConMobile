@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b9fc187dfe943ce8af975d8095cbcf, type: 3}
+  m_Name: DamageIcons
+  m_EditorClassIdentifier: 
+  Sprites:
+  - {fileID: 21300000, guid: 0ad5dae8989a94253b56ab33fa045011, type: 3}
+  - {fileID: 21300000, guid: 87ad4d11ee0e943f1876fe448b23cde1, type: 3}
+  - {fileID: 21300000, guid: 5ea9ea04f0480496796ae833cf83ec4c, type: 3}
+  - {fileID: 21300000, guid: e945ec4f05a504aa98b1b66e2369b64b, type: 3}
+  - {fileID: 21300000, guid: d50ce6394271140f28a7161c5e401c8e, type: 3}
+  - {fileID: 21300000, guid: aea34c49c03474e03a71d15b292c8cad, type: 3}
+  - {fileID: 21300000, guid: c29b1bc6427ab47d2b04e64df320aab1, type: 3}
+  - {fileID: 21300000, guid: 953f62d9f2a854e22a0fcb519c7f8102, type: 3}
+  - {fileID: 21300000, guid: 87ad4d11ee0e943f1876fe448b23cde1, type: 3}

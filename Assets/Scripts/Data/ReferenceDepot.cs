@@ -24,10 +24,12 @@ public class ReferenceDepot<T> where T : ReferenceData {
     this.depot.Add(entry.Reference, entry);
   }
 
-  public T Get(string reference) {
+  public T Get(string reference, bool ignoreWarning = false) {
     T result;
     if (!this.depot.TryGetValue(reference, out result)) {
-      Debug.LogError("Could not find " + typeof(T) + " with reference '" + reference + "'");
+      if (!ignoreWarning) {
+        Debug.LogError("Could not find " + typeof(T) + " with reference '" + reference + "'");
+      }
     }
 
     return result;
