@@ -1,6 +1,7 @@
 ﻿public class Equipment {
   public BaseEquipment Base { get; private set; }
   public int Damage { get; private set; }
+  public bool HasQuality { get; private set; }
   public Rarity Rarity => this.Base.Unique ? Rarity.Unique : this.rarity;
   public EquipmentType EquipmentType => this.Base.EquipmentType;
   public DamageSetConfig RolledMod { get; private set; }
@@ -8,7 +9,7 @@
   public DamageSet DamageTypes => this.qualityDamageTypes + this.BaseDamageTypes + this.RolledDamageTypes;
 
   public string Name => Base.Name;
-  public string ModifierName => RolledMod == null ? null : RolledMod.Translation;
+  public string ModifierName => RolledMod?.Translation;
 
   public DamageSet BaseDamageTypes => this.Base.DamageSet;
   public DamageSet RolledDamageTypes {
@@ -20,6 +21,15 @@
       return this.RolledMod?.DamageSet ?? new DamageSet();
     }
   }
+
+  public SavedEquipment SavedEquipment =>
+    new SavedEquipment {
+      BaseReference = this.Base.Reference,
+      Damage = this.Damage,
+      Rarity = this.Rarity,
+      RolledModReference = this.RolledMod?.Reference,
+      HasQuality = this.HasQuality
+    };
 
   public DamageSet QualityDamageTypes => this.qualityDamageTypes;
 
@@ -50,6 +60,14 @@
 
   public Equipment(int damage) {
     this.Damage = damage;
+  }
+
+  public Equipment(BaseEquipment baseEquipment, Rarity rarity, DamageSetConfig rolledMod, int damage, bool hasQuality) {
+    this.Base = baseEquipment;
+    this.rarity = rarity;
+    this.RolledMod = rolledMod;
+    this.Damage = damage;
+    this.HasQuality = hasQuality;
   }
 
   public void SetRolledMod(DamageSetConfig rolledMod, Rarity rarity) {
