@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: card_base/Unique
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2713b76a247294880af25473b9e4161c
+    m_Address: currency/Whetstone
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 2a7d70f4c0b344c6e848e2e75f5934af
     m_Address: card_base/Rare
     m_ReadOnly: 0
@@ -33,8 +37,24 @@ MonoBehaviour:
     m_Address: items/ring_cold
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 3d0a1bcef1c4c42a2b719816c9e24cb1
+    m_Address: currency/Alteration
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 6059e72697fba46e8baf5b68d23c86bd
     m_Address: items/unq_aml_volls
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 698842d75367546c0a1ed2761b163fad
+    m_Address: currency/Scour
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ec0ea76a0f5f490f82aeb92029625cc
+    m_Address: currency/Alchemy
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b0fcda6da867f4ffc81568df4d7fe1a8
+    m_Address: currency/Scrap
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b9f0a3b21d96d4a56be761650e2686c6
@@ -49,8 +69,16 @@ MonoBehaviour:
     m_Address: card_base/Currency
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d35c77f821b6c49cfa4a96e48c939d0a
+    m_Address: currency/Transmute
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: d477fa6cbf9954076b010881d87a71ea
     m_Address: items/claw_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e6f170bfe3d204720ac242435d22b034
+    m_Address: currency/Chaos
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: f147c8535a49c48a39db5f59d2c61872

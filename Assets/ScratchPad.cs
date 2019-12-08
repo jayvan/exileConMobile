@@ -1,60 +1,49 @@
-﻿using System.Collections;
-using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ScratchPad : MonoBehaviour {
-  public CardView cardView;
-  public CardView cardViewTwo;
-  public CardView cardViewThree;
-  public CardView cardViewFour;
+  public CardView[] cardViews;
+  public CardView[] currencyCardViews;
     void Start() {
       Data.Load();
+      PlayerInventory.Load();
+      PlayerInventory.Clear();
       StartCoroutine(this.RunScratchpad());
     }
 
     IEnumerator RunScratchpad() {
       Equipment equip = new Equipment(Data.BaseEquipments.Get("2mace_4"));
       equip.SetRolledMod(Data.DamageSets.Get("mod_phys_2"), Rarity.Magic);
-      this.cardView.SetItem(equip);
+      PlayerInventory.Grant(equip);
 
       equip = new Equipment(Data.BaseEquipments.Get("unq_aml_volls"));
-      this.cardViewTwo.SetItem(equip);
+      PlayerInventory.Grant(equip);
 
       equip = new Equipment(Data.BaseEquipments.Get("ring_cold"));
       equip.SetRolledMod(Data.DamageSets.Get("mod_ring_rare_1"), Rarity.Rare);
       equip.RemoveDurability();
       equip.RemoveDurability();
-      this.cardViewThree.SetItem(equip);
+      PlayerInventory.Grant(equip);
+
+      equip = new Equipment(Data.BaseEquipments.Get("2mace_4"));
+      PlayerInventory.Grant(equip);
+      PlayerInventory.Destroy(equip);
 
       equip = new Equipment(Data.BaseEquipments.Get("str_shield_1"));
       equip.RemoveDurability();
+      PlayerInventory.Grant(equip);
 
-      var formatter = new BinaryFormatter();
-      MemoryStream stream = new MemoryStream();
-      formatter.Serialize(stream, equip.SavedEquipment);
-      stream.Seek(0, SeekOrigin.Begin);
-      string serializedString = Encoding.UTF8.GetString(stream.GetBuffer(), 0, (int)stream.Length);
-      PlayerPrefs.SetString("test", serializedString);
-      stream.SetLength(0);
-      string str = PlayerPrefs.GetString("test");
-      var bytes = Encoding.UTF8.GetBytes(str);
-      stream.Write(bytes, 0, bytes.Length);
-      stream.Seek(0, SeekOrigin.Begin);
-      equip = PlayerInventory.FromSave(formatter.Deserialize(stream) as SavedEquipment);
-      this.cardViewFour.SetItem(equip);
+      int index = 0;
+      foreach (Equipment equipment in PlayerInventory.All()) {
+        this.cardViews[index++].SetItem(equipment);
+      }
 
-      yield break;
+      index = 0;
+      foreach (CurrencyType value in Enum.GetValues(typeof(CurrencyType))) {
+        this.currencyCardViews[index++].SetItem(value);
+      }
 
-      var saved = new PlayerData<SavedEquipment>("foo");
-      saved.Value = equip.SavedEquipment;
-
-      yield return new WaitForSeconds(0.01f);
-
-      var restored = new PlayerData<SavedEquipment>("foo");
-      equip = PlayerInventory.FromSave(restored.Value);
-      this.cardViewFour.SetItem(equip);
+      yield return null;
     }
 }

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CardAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 137dc65d1b1524f0cbc0dc8d93cd03ff, type: 3}
+    totalSpriteSurfaceArea: 1025679
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 87ad4d11ee0e943f1876fe448b23cde1, type: 3}
+  - {fileID: 21300000, guid: b9f0a3b21d96d4a56be761650e2686c6, type: 3}
+  - {fileID: 21300000, guid: 2fd96f23924d743eb9501fed8a72ddfb, type: 3}
+  - {fileID: 21300000, guid: 5ea9ea04f0480496796ae833cf83ec4c, type: 3}
+  - {fileID: 21300000, guid: 30a5bb64609bf459087227aad66dae42, type: 3}
+  - {fileID: 21300000, guid: 2a7d70f4c0b344c6e848e2e75f5934af, type: 3}
+  - {fileID: 21300000, guid: c4159b66323e54eb8a3ca96502fc5b38, type: 3}
+  - {fileID: 21300000, guid: c29b1bc6427ab47d2b04e64df320aab1, type: 3}
+  - {fileID: 21300000, guid: 6e5fd7c7616e24b288c6e92a820474f3, type: 3}
+  - {fileID: 21300000, guid: a2be66d7bb8104ecca796bdd14012b84, type: 3}
+  - {fileID: 21300000, guid: 85621cd8e73ad4428bc946bfc326df48, type: 3}
+  - {fileID: 21300000, guid: 0ad5dae8989a94253b56ab33fa045011, type: 3}
+  - {fileID: 21300000, guid: d50ce6394271140f28a7161c5e401c8e, type: 3}
+  - {fileID: 21300000, guid: aea34c49c03474e03a71d15b292c8cad, type: 3}
+  - {fileID: 21300000, guid: 953f62d9f2a854e22a0fcb519c7f8102, type: 3}
+  - {fileID: 21300000, guid: e60aa39a77311429792801b578bd95c0, type: 3}
+  - {fileID: 21300000, guid: cf7fb66b7a08e43cd8c9a67f7be48e64, type: 3}
+  - {fileID: 21300000, guid: 06e7503dfa0154a459a811867e57adc9, type: 3}
+  - {fileID: 21300000, guid: 8606075e0dc654515bdd28bb0fda7ead, type: 3}
+  - {fileID: 21300000, guid: e945ec4f05a504aa98b1b66e2369b64b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - life
+  - magic
+  - normal
+  - physical
+  - oneHand
+  - rare
+  - currency
+  - chaos
+  - twoHand
+  - amulet
+  - clip
+  - block
+  - fire
+  - cold
+  - wild
+  - shield
+  - body
+  - unique
+  - ring
+  - lightning
+  m_Tag: CardAtlas
+  m_IsVariant: 0

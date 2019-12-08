@@ -56,3 +56,17 @@ Body	Armour
 Amulet	Amulet
 Ring	Ring
 unq_aml_volls	Voll’s Devotion
+currency.Scrap.name	Armourer's Scrap
+currency.Whetstone.name	Blacksmith’s Whetstone
+currency.Transmute.name	Orb of Transmutation
+currency.Alchemy.name	Orb of Alchemy
+currency.Alteration.name	Orb of Alteration
+currency.Chaos.name	Chaos Orb
+currency.Scour.name	Orb of Scouring
+currency.Scrap.description	Improves the quality of an armour
+currency.Whetstone.description	Improves the quality of a weapon
+currency.Transmute.description	Upgrades a normal item to a magic item
+currency.Alchemy.description	Upgrades a normal item to a rare item
+currency.Alteration.description	Reforges a magic item with new random modifiers
+currency.Chaos.description	Reforges a rare item with new random modifiers
+currency.Scour.description	Removes all modifiers from an item
