@@ -6,13 +6,14 @@
   public EquipmentType EquipmentType => this.Base.EquipmentType;
   public DamageSetConfig RolledMod { get; private set; }
 
-  public DamageSet DamageTypes => this.qualityDamageTypes + this.BaseDamageTypes + this.RolledDamageTypes;
+  public DamageSet DamageSet => this.QualityDamageSet + this.BaseDamageSet + this.RolledDamageSet;
 
   public string Name => Base.Name;
   public string ModifierName => RolledMod?.Translation;
 
-  public DamageSet BaseDamageTypes => this.Base.DamageSet;
-  public DamageSet RolledDamageTypes {
+  public DamageSet BaseDamageSet => this.Base.DamageSet;
+
+  public DamageSet RolledDamageSet {
     get {
       if (this.Base.Unique) {
         return this.Base.SecondaryDamageSet;
@@ -31,9 +32,7 @@
       HasQuality = this.HasQuality
     };
 
-  public DamageSet QualityDamageTypes => this.qualityDamageTypes;
-
-  private DamageSet qualityDamageTypes = new DamageSet();
+  public DamageSet QualityDamageSet => this.HasQuality ? this.EquipmentType.QualityDamageSet() : new DamageSet();
   private Rarity rarity;
 
   public Equipment(BaseEquipment baseEquipment) {
@@ -77,5 +76,50 @@
 
   public void RemoveDurability() {
     this.Damage++;
+  }
+
+  public bool UseCurrency(CurrencyType currency) {
+    if (!CanUseCurrency(currency)) {
+      return false;
+    }
+
+    switch (currency) {
+      case CurrencyType.Scrap:
+      case CurrencyType.Whetstone:
+        this.HasQuality = true;
+        break;
+      case CurrencyType.Transmute:
+      case CurrencyType.Alteration:
+        break;
+      case CurrencyType.Chaos:
+      case CurrencyType.Alchemy:
+        break;
+      case CurrencyType.Scour:
+        this.SetRolledMod(null, Rarity.Normal);
+        break;
+    }
+
+    return true;
+  }
+
+  public bool CanUseCurrency(CurrencyType currency) {
+    switch (currency) {
+      case CurrencyType.Scrap:
+        return (this.EquipmentType == EquipmentType.Body || this.EquipmentType == EquipmentType.Shield) &&
+               !this.HasQuality;
+      case CurrencyType.Whetstone:
+        return (this.EquipmentType == EquipmentType.OneHand || this.EquipmentType == EquipmentType.TwoHand) &&
+               !this.HasQuality;
+      case CurrencyType.Transmute:
+      case CurrencyType.Alchemy:
+        return this.Rarity == Rarity.Normal;
+      case CurrencyType.Alteration:
+        return this.Rarity == Rarity.Magic;
+      case CurrencyType.Chaos:
+        return this.Rarity == Rarity.Rare;
+      case CurrencyType.Scour:
+        return this.Rarity != Rarity.Normal && this.Rarity != Rarity.Unique;
+    }
+    return false;
   }
 }

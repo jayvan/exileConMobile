@@ -22,17 +22,17 @@ public class Enemy {
       switch (equipment.EquipmentType) {
         case EquipmentType.OneHand:
         case EquipmentType.TwoHand:
-          playerAttack += equipment.DamageTypes;
+          playerAttack += equipment.DamageSet;
           break;
         case EquipmentType.Body:
         case EquipmentType.Shield:
-          playerDefense += equipment.DamageTypes;
+          playerDefense += equipment.DamageSet;
           break;
         case EquipmentType.Ring:
         case EquipmentType.Amulet:
-          playerAttack.Physical += equipment.DamageTypes.Physical;
-          playerDefense.Block += equipment.DamageTypes.Block;
-          playerJewelry += equipment.DamageTypes;
+          playerAttack.Physical += equipment.DamageSet.Physical;
+          playerDefense.Block += equipment.DamageSet.Block;
+          playerJewelry += equipment.DamageSet;
           break;
       }
     }

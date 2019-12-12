@@ -31,7 +31,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 137dc65d1b1524f0cbc0dc8d93cd03ff, type: 3}
-    totalSpriteSurfaceArea: 1025679
+    totalSpriteSurfaceArea: 1137929
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -50,6 +50,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d50ce6394271140f28a7161c5e401c8e, type: 3}
   - {fileID: 21300000, guid: aea34c49c03474e03a71d15b292c8cad, type: 3}
   - {fileID: 21300000, guid: 953f62d9f2a854e22a0fcb519c7f8102, type: 3}
+  - {fileID: 21300000, guid: 37eefe5ae48974dea834095d2f81f331, type: 3}
   - {fileID: 21300000, guid: e60aa39a77311429792801b578bd95c0, type: 3}
   - {fileID: 21300000, guid: cf7fb66b7a08e43cd8c9a67f7be48e64, type: 3}
   - {fileID: 21300000, guid: 06e7503dfa0154a459a811867e57adc9, type: 3}
@@ -71,6 +72,7 @@ SpriteAtlas:
   - fire
   - cold
   - wild
+  - quality
   - shield
   - body
   - unique

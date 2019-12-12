@@ -19,8 +19,8 @@ class DamageSetView : MonoBehaviour {
   }
 
   public void ClearDamage() {
-    foreach (GameObject g in this.transform) {
-      Destroy(g);
+    foreach (Transform g in this.transform) {
+      Destroy(g.gameObject);
     }
   }
 

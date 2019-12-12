@@ -9,4 +9,8 @@ public class DamageSetConfig : ReferenceData {
     this.DamageSet = new DamageSet(fields);
     this.Translation = translation == null ? string.Empty : translation.Value;
   }
+
+  public DamageSetConfig(DamageSet damageSet) {
+    this.DamageSet = damageSet;
+  }
 }

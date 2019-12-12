@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CardView : MonoBehaviour {
+  [SerializeField] private Button button;
   [SerializeField] private Image backgroundImage;
   [SerializeField] private Text itemName;
   [SerializeField] private DamageSetView implicitMods;
@@ -13,6 +15,14 @@ public class CardView : MonoBehaviour {
   [SerializeField] private GameObject[] durabilities;
   [SerializeField] private Image itemImage;
   [SerializeField] private RarityColors rarityColors;
+  [SerializeField] private GameObject qualityContainer;
+  [SerializeField] private DamageSetView qualityMods;
+  //private Action onClick;
+
+  public void SetAction(UnityAction clickAction) {
+    this.button.onClick.RemoveAllListeners();
+    this.button.onClick.AddListener(clickAction);
+  }
 
   public void SetItem(CurrencyType currencyType) {
     this.itemName.text = currencyType.Name();
@@ -21,6 +31,7 @@ public class CardView : MonoBehaviour {
     this.modifierName.text = string.Empty;
     this.implicitMods.ClearDamage();
     this.explicitMods.ClearDamage();
+    this.qualityContainer.SetActive(false);
     this.SetActiveType(null);
     this.SetDamage(0);
 
@@ -54,8 +65,10 @@ public class CardView : MonoBehaviour {
     this.itemName.color = this.modifierName.color = this.rarityColors.Get(item);
     this.SetActiveType(item.EquipmentType);
     this.SetDamage(item.Damage);
-    this.implicitMods.SetDamage(item.BaseDamageTypes);
-    this.explicitMods.SetDamage(item.RolledDamageTypes);
+    this.qualityContainer.SetActive(item.HasQuality);
+    this.qualityMods.SetDamage(item.QualityDamageSet);
+    this.implicitMods.SetDamage(item.BaseDamageSet);
+    this.explicitMods.SetDamage(item.RolledDamageSet);
   }
 
   private void SetDamage(int damage) {

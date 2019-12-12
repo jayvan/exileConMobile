@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ScratchPad : MonoBehaviour {
+  public Image currencyImage;
   public CardView[] cardViews;
   public CardView[] currencyCardViews;
+  private CurrencyType activeCurrency;
+
     void Start() {
       Data.Load();
       PlayerInventory.Load();
@@ -13,6 +19,7 @@ public class ScratchPad : MonoBehaviour {
     }
 
     IEnumerator RunScratchpad() {
+      SetActiveCurrency(CurrencyType.Whetstone);
       Equipment equip = new Equipment(Data.BaseEquipments.Get("2mace_4"));
       equip.SetRolledMod(Data.DamageSets.Get("mod_phys_2"), Rarity.Magic);
       PlayerInventory.Grant(equip);
@@ -36,6 +43,7 @@ public class ScratchPad : MonoBehaviour {
 
       int index = 0;
       foreach (Equipment equipment in PlayerInventory.All()) {
+        this.cardViews[index].SetAction(this.UseCurrency(equipment, this.cardViews[index]));
         this.cardViews[index++].SetItem(equipment);
       }
 
@@ -45,5 +53,28 @@ public class ScratchPad : MonoBehaviour {
       }
 
       yield return null;
+    }
+
+    public void Update() {
+      for (int i = 0; i < 7; i++) {
+        KeyCode code = KeyCode.Alpha0 + i;
+        if (Input.GetKeyDown(code)) {
+          SetActiveCurrency((CurrencyType)i);
+        }
+      }
+    }
+
+    private UnityAction UseCurrency(Equipment equipment, CardView cardView) {
+      return () => {
+        equipment.UseCurrency(this.activeCurrency);
+        cardView.SetItem(equipment);
+      };
+    }
+
+    private void SetActiveCurrency(CurrencyType currency) {
+      this.activeCurrency = currency;
+      Addressables.LoadAssetAsync<Sprite>("currency/" + this.activeCurrency).Completed += load => {
+        this.currencyImage.sprite = load.Result;
+      };
     }
 }
