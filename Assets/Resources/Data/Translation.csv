@@ -70,3 +70,6 @@ currency.Alchemy.description	Upgrades a normal item to a rare item
 currency.Alteration.description	Reforges a magic item with new random modifiers
 currency.Chaos.description	Reforges a rare item with new random modifiers
 currency.Scour.description	Removes all modifiers from an item
+mod_block_2	of Toughness
+mod_block_1	of Sturdiness
+mod_light_1	of Shocking

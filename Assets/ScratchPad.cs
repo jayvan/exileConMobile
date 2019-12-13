@@ -6,9 +6,11 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ScratchPad : MonoBehaviour {
-  public Image currencyImage;
+  public CardView currencyCard;
   public CardView[] cardViews;
   public CardView[] currencyCardViews;
+  public GameObject currencyPrefab;
+  public GameObject currencyContainer;
   private CurrencyType activeCurrency;
 
     void Start() {
@@ -19,6 +21,13 @@ public class ScratchPad : MonoBehaviour {
     }
 
     IEnumerator RunScratchpad() {
+      foreach (CurrencyType value in Enum.GetValues(typeof(CurrencyType))) {
+        var currency = GameObject.Instantiate(this.currencyPrefab, this.currencyContainer.transform);
+        currency.GetComponent<Button>().onClick.AddListener(() => this.SetActiveCurrency(value));
+          Addressables.LoadAssetAsync<Sprite>("currency/" + value).Completed += load => {
+            currency.GetComponent<Image>().sprite = load.Result;
+          };
+      }
       SetActiveCurrency(CurrencyType.Whetstone);
       Equipment equip = new Equipment(Data.BaseEquipments.Get("2mace_4"));
       equip.SetRolledMod(Data.DamageSets.Get("mod_phys_2"), Rarity.Magic);
@@ -73,8 +82,6 @@ public class ScratchPad : MonoBehaviour {
 
     private void SetActiveCurrency(CurrencyType currency) {
       this.activeCurrency = currency;
-      Addressables.LoadAssetAsync<Sprite>("currency/" + this.activeCurrency).Completed += load => {
-        this.currencyImage.sprite = load.Result;
-      };
+      this.currencyCard.SetItem(currency);
     }
 }

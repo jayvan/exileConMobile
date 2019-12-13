@@ -1,0 +1,11 @@
+DamageSetConfig	EquipmentType	Rarity
+mod_phys_2	OneHand	Magic
+mod_cold_1	OneHand	Magic
+mod_phys_2	TwoHand	Magic
+mod_cold_1	TwoHand	Magic
+mod_block_2	Shield	Magic
+mod_light_1	Shield	Magic
+mod_block_2	Body	Magic
+mod_light_1	Body	Magic
+mod_cold_1	Ring	Magic
+mod_light_1	Ring	Magic

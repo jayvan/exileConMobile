@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +23,12 @@ public class ReferenceDepot<T> where T : ReferenceData {
 
   public void Add(T entry) {
     this.depot.Add(entry.Reference, entry);
+  }
+
+  public IEnumerable<T> All() {
+    foreach (T referenceData in this.depot.Values) {
+      yield return referenceData;
+    }
   }
 
   public T Get(string reference, bool ignoreWarning = false) {

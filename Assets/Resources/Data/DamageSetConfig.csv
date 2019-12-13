@@ -1,10 +1,13 @@
 reference	Block	Physical	Fire	Cold	Lightning	Chaos	Wild	Extra
 2mace_4	0	2	2	0	0	0	0	0
 mod_phys_2	0	2	0	0	0	0	0	0
-claw_2	0	1	0	0	0	0	0	1
 mod_cold_1	0	0	0	1	0	0	0	0
+claw_2	0	1	0	0	0	0	0	1
 mod_ring_rare_1	1	0	0	0	2	0	0	0
 ring_cold	0	0	0	1	0	0	0	0
 str_shield_1	1	0	0	0	0	0	0	0
 unq_aml_volls	0	1	0	0	0	0	0	0
 unq_aml_volls_2	0	0	0	0	0	0	2	2
+mod_block_2	2	0	0	0	0	0	0	0
+mod_block_1	1	0	0	0	0	0	0	0
+mod_light_1	0	0	0	0	1	0	0	0

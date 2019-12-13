@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using UnityEditor.VersionControl;
 
 [Timeout(1000)]
 public class CurrencyTest {

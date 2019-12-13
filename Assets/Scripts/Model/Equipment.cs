@@ -90,6 +90,7 @@
         break;
       case CurrencyType.Transmute:
       case CurrencyType.Alteration:
+        this.SetRolledMod(Data.GetMod(this.EquipmentType, Rarity.Magic, this.RolledMod).DamageSetConfig, Rarity.Magic);
         break;
       case CurrencyType.Chaos:
       case CurrencyType.Alchemy:
