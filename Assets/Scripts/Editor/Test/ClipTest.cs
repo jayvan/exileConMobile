@@ -163,7 +163,7 @@ public class ClipTest {
     // Jewelry > Rarity > Durability
     Equipment ringA = new Equipment(EquipmentType.Ring, Rarity.Rare, 2);
     Equipment ringB = new Equipment(EquipmentType.Ring, Rarity.Rare, 1);
-    Equipment amulet = new Equipment(EquipmentType.Ring, Rarity.Magic, 1);
+    Equipment amulet = new Equipment(EquipmentType.Amulet, Rarity.Magic, 1);
     Equipment weapon = new Equipment(EquipmentType.OneHand, Rarity.Rare, 2);
     Equipment shield = new Equipment(EquipmentType.Shield, Rarity.Rare, 1);
     Equipment body = new Equipment(EquipmentType.Body, Rarity.Normal, 2);
@@ -175,11 +175,11 @@ public class ClipTest {
     comparer.SetNext(new HighestRarityComparer()).SetNext(new LeastDamagedComparer());
 
     equipment.Sort(comparer);
-    Assert.AreEqual(ringA, equipment[0]);
-    Assert.AreEqual(ringB, equipment[1]);
+    Assert.AreEqual(ringB, equipment[0]);
+    Assert.AreEqual(ringA, equipment[1]);
     Assert.AreEqual(amulet, equipment[2]);
-    Assert.AreEqual(weapon, equipment[3]);
-    Assert.AreEqual(shield, equipment[4]);
+    Assert.AreEqual(shield, equipment[3]);
+    Assert.AreEqual(weapon, equipment[4]);
     Assert.AreEqual(body, equipment[5]);
   }
 }

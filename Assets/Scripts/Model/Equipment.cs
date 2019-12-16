@@ -54,6 +54,7 @@
   }
 
   public Equipment(Rarity rarity) {
+    this.Base = new BaseEquipment(EquipmentType.OneHand, new DamageSet());
     this.rarity = rarity;
   }
 
@@ -78,7 +79,7 @@
     this.Damage++;
   }
 
-  public bool UseCurrency(CurrencyType currency) {
+  public bool UseCurrency(CurrencyType currency, ModPool modPool) {
     if (!CanUseCurrency(currency)) {
       return false;
     }
@@ -90,10 +91,11 @@
         break;
       case CurrencyType.Transmute:
       case CurrencyType.Alteration:
-        this.SetRolledMod(Data.GetMod(this.EquipmentType, Rarity.Magic, this.RolledMod).DamageSetConfig, Rarity.Magic);
+        this.SetRolledMod(modPool.GetMod(this.EquipmentType, Rarity.Magic, this.RolledMod).DamageSetConfig, Rarity.Magic);
         break;
       case CurrencyType.Chaos:
       case CurrencyType.Alchemy:
+        this.SetRolledMod(modPool.GetMod(this.EquipmentType, Rarity.Rare, this.RolledMod).DamageSetConfig, Rarity.Rare);
         break;
       case CurrencyType.Scour:
         this.SetRolledMod(null, Rarity.Normal);

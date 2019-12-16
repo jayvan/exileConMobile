@@ -75,7 +75,7 @@ public class ScratchPad : MonoBehaviour {
 
     private UnityAction UseCurrency(Equipment equipment, CardView cardView) {
       return () => {
-        equipment.UseCurrency(this.activeCurrency);
+        equipment.UseCurrency(this.activeCurrency, Data.ModPool);
         cardView.SetItem(equipment);
       };
     }
